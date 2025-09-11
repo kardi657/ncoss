@@ -1,1 +1,2 @@
-# ncoss
+creator : xmaze
+rename : ncoss
