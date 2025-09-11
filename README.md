@@ -1,2 +1,2 @@
-creator : xmaze
-rename : ncoss
+// creator : xmaze //
+// rename : ncoss //
