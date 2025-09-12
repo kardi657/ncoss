@@ -1,176 +1,135 @@
-const _0x37affc = _0x19f4;
-(function (_0x48ca49, _0x577adc) {
-    const _0xb568ec = _0x19f4,
-        _0xcc1d52 = _0x48ca49();
-    while (!![]) {
-        try {
-            const _0x380dac = -parseInt(_0xb568ec(0x249)) / (-0xc17 + -0x35 * 0x27 + -0x3 * -0x6b9) + -parseInt(_0xb568ec(0x216)) / (-0xde + -0x235f + 0x243f) + parseInt(_0xb568ec(0x23a)) / (0x1 * -0xb5 + -0x1 * -0xd54 + -0xc9c) * (parseInt(_0xb568ec(0x255)) / (-0x24d4 + 0x144c + 0x108c)) + parseInt(_0xb568ec(0x276)) / (0x1 * -0x449 + 0x20b * 0x1 + 0x1 * 0x243) + -parseInt(_0xb568ec(0x244)) / (0xa0c + -0x177d + 0x3 * 0x47d) * (parseInt(_0xb568ec(0x26e)) / (0x1d7d * 0x1 + -0xbf0 + -0x2 * 0x8c3)) + parseInt(_0xb568ec(0x235)) / (0x26 * -0x82 + 0x7 * -0x10f + 0x1abd) + parseInt(_0xb568ec(0x237)) / (-0x1457 + 0x2571 + -0x11 * 0x101);
-            if (_0x380dac === _0x577adc) break;
-            else _0xcc1d52['push'](_0xcc1d52['shift']());
-        } catch (_0x17bb53) {
-            _0xcc1d52['push'](_0xcc1d52['shift']());
-        }
-    }
-}(_0x32f9, -0x13344c + -0x118d3d + 0x30aa3c));
-function _0x19f4(_0x396711, _0x2cc29d) {
-    const _0x3dc88d = _0x32f9();
-    return _0x19f4 = function (_0x26c1ee, _0x1b4b27) {
-        _0x26c1ee = _0x26c1ee - (-0x17 * -0x139 + 0x50f + -0x1f3d);
-        let _0x1a3fb0 = _0x3dc88d[_0x26c1ee];
-        return _0x1a3fb0;
-    }, _0x19f4(_0x396711, _0x2cc29d);
+/*
+*TO FIGURE*
+- author & scrape: gienetic [ https://pastebin.com/TUe6MmLM ]
+
+- khaerul
+*/
+import fs from "fs";
+import path from "path";
+import axios from "axios";
+import FormData from "form-data";
+import crypto from "crypto";
+import { fileURLToPath } from "url";
+
+const BASE_URL = "https://ai-apps.codergautam.dev";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+async function handler(m, { conn, text, usedPrefix, command }) {
+  let q = m.quoted ? m.quoted : m;
+  let mime = (q.msg || q).mimetype || "";
+
+  if (!mime) return m.reply(`Kirim/reply gambar dengan caption *${usedPrefix + command}*`);
+  if (!/image\/(jpe?g|png)/.test(mime)) return m.reply(`Format ${mime} tidak didukung!`);
+
+  let promptText =
+    text ||
+    "Use the nano-banana model to create a 1/7 scale commercialized figure of the character in the illustration, in a realistic style and environment. Place the figure on a computer desk, using a circular transparent acrylic base without any text. On the computer screen, display the Blender modeling process of the figure. Next to the computer screen, place a marvel-style toy packaging box printed with the original artwork.";
+
+  // FIXED: langsung pake reply biasa, gak pake global.mess
+  m.reply("⏳ Tunggu sebentar, lagi diproses...");
+
+  try {
+    let imgData = await q.download();
+    let resultBuffer = await img2img(imgData, promptText);
+
+    const outputDir = path.join(__dirname, "../temp");
+    if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
+
+    const outputPath = path.join(outputDir, `img2img_${Date.now()}.jpg`);
+    fs.writeFileSync(outputPath, resultBuffer);
+
+    await conn.sendMessage(
+      m.chat,
+      {
+        image: { url: outputPath },
+        caption: `Jadi cuy!`,
+      },
+      { quoted: m }
+    );
+
+    setTimeout(() => {
+      try {
+        fs.unlinkSync(outputPath);
+      } catch {}
+    }, 30000);
+  } catch (e) {
+    console.error(e);
+    m.reply("error: " + e.message);
+  }
 }
-import _0x292e7b from 'axios';
-import _0x480377 from 'form-data';
-import _0xc053e2 from 'crypto';
-const BASE_URL = _0x37affc(0x248) + _0x37affc(0x218) + _0x37affc(0x285) + 'v',
-    PROMPT = _0x37affc(0x22d) + _0x37affc(0x238) + _0x37affc(0x225) + _0x37affc(0x22a) + _0x37affc(0x246) + _0x37affc(0x24b) + _0x37affc(0x27c) + _0x37affc(0x252) + _0x37affc(0x232) + _0x37affc(0x221) + _0x37affc(0x25d) + _0x37affc(0x241) + _0x37affc(0x279) + _0x37affc(0x21d) + _0x37affc(0x21f) + _0x37affc(0x229) + _0x37affc(0x277) + _0x37affc(0x204) + _0x37affc(0x231) + _0x37affc(0x217) + _0x37affc(0x1f1) + _0x37affc(0x265) + _0x37affc(0x274) + _0x37affc(0x269) + _0x37affc(0x254) + _0x37affc(0x24f) + _0x37affc(0x25a) + _0x37affc(0x1f2) + _0x37affc(0x26d) + _0x37affc(0x247) + _0x37affc(0x219) + _0x37affc(0x228) + _0x37affc(0x266) + _0x37affc(0x258) + _0x37affc(0x20b) + _0x37affc(0x1f6) + _0x37affc(0x22b) + _0x37affc(0x257) + _0x37affc(0x25b) + _0x37affc(0x20c) + _0x37affc(0x233) + '.';
-function _0x32f9() {
-    const _0x43611c = ['n/json', 'ase. The c', '2207936uSKNus', 'wait', 'with the o', 'mputer scr', 'XBAPR', 'reen shows', 'riginal pa', 'uvwxyz', 'tyle and a', 'kJRzE', 'AUlQj', 'now', 'getHeaders', 'YrfLs', 'pending', 'toString', 'ase. There', ' to the co', 'stringify', 'dbhks', 't on the b', 'random', 'https://i.', 'from', 'h modeling', '26922CIJoAr', 'ryvym', 'hex', 'klmnopqrst', 'pravatar.c', 'url', ' is no tex', 'GMVbO', '3414270ZQTmwg', 'a computer', 'UQyNo', ' environme', 'test', 'zen.png', 'ure was cr', 'create-use', 'gienetic', 'gzip', 'generate-i', 'KKQbs', 'get', 'mage', 'IVbRB', 'rgautam.de', ' acrylic b', ' the Zbrus', 'post', '@nyahoo.co', 'ambar', 'ANDAI-styl', 'BznOZ', 'apatkan ha', 'dhEgj', 'length', 'JlpfH', 'photogpt', 'chat', 'okhttp/4.9', 'Ready', 'XkyWR', 'reply', 'XKOSp', 'XIptP', ' desk with', 'mimetype', 'eror pas m', 'SJbvz', 'gagal mend', 'append', 'prompt', 'een is a B', 'inting pri', 'abcdefghij', 'ikexZ', 'UvmdC', 'randomByte', 'engunduh g', '.tofigure', 'userId', 'image/jpeg', 'applicatio', '1219564NYkIwu', 'ransparent', '-apps.code', 'f the figu', 'kahUH', 'result', 'vkLtX', 'nt. The fi', 'QMlEu', 'gurine is ', 'sil gambar', 'ealistic s', 'image', 'reply gamb', 'join', 'le figurin', 'data', 'Eror kak :', 'rine. Next', 'placed on ', 'e of the c', 'e toy box ', 'success', 'a commerci', 'yBZaV', 'command : ', 'floor', ' a round t', 'icting a r', 'nted on it', 'message', '8239352ceKkTf', 'status', '4208976ghMwuT', 'al 1/7 sca', 'sendFile', '6GskNuq', 'c/150', 'download', 'bnotW', 'agal cuy: ', 'quoted', 'arraybuffe', ' realistic', 'ar dengan ', 'input.jpg', '1164GfoGEq', 'SAYrJ', 'haracter i', ' process o', 'https://ai', '1148032CfyFbG', 'TYIha', 'n the pict', 'dfHMY', '/photogpt/', 'Wkyhj', 'omputer sc', 'Register g', 'hobqh', 'eated, dep'];
-    _0x32f9 = function () {
-        return _0x43611c;
-    };
-    return _0x32f9();
+
+handler.command = ["nanobanana", "tofigure"];
+handler.help = ["tofigure"];
+handler.tags = ["ai"];
+export default handler;
+
+function acakName(len = 10) {
+  const chars = "abcdefghijklmnopqrstuvwxyz";
+  return Array.from({ length: len }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
 }
-function acakName(_0x4664aa = 0x1 * 0x11b7 + -0x828 + -0x985 * 0x1) {
-    const _0x5c6261 = _0x37affc,
-        _0xcd9af6 = {
-            'BznOZ': _0x5c6261(0x20d) + _0x5c6261(0x271) + _0x5c6261(0x25c)
-        },
-        _0x4adad3 = _0xcd9af6[_0x5c6261(0x1f7)];
-    return Array[_0x5c6261(0x26c)]({
-        'length': _0x4664aa
-    }, () => _0x4adad3[Math[_0x5c6261(0x230)](Math[_0x5c6261(0x26a)]() * _0x4adad3[_0x5c6261(0x1fa)])])[_0x5c6261(0x224)]('');
-}
+
 async function autoregist() {
-    const _0x7d7487 = _0x37affc,
-        _0x426770 = {
-            'kahUH': _0x7d7487(0x270),
-            'XIptP': function (_0x588ab6) {
-                return _0x588ab6();
-            },
-            'SJbvz': _0x7d7487(0x26b) + _0x7d7487(0x272) + _0x7d7487(0x23b),
-            'IVbRB': _0x7d7487(0x1fc),
-            'UvmdC': _0x7d7487(0x215) + _0x7d7487(0x253),
-            'dbhks': _0x7d7487(0x1fe) + '.2',
-            'XKOSp': function (_0x104088, _0x2f9fb3) {
-                return _0x104088 + _0x2f9fb3;
-            },
-            'kJRzE': _0x7d7487(0x250) + _0x7d7487(0x23e)
-        },
-        _0x249992 = _0xc053e2[_0x7d7487(0x210) + 's'](0x43 * 0x3b + 0x149 * 0xd + 0x100d * -0x2)[_0x7d7487(0x264)](_0x426770[_0x7d7487(0x21a)]),
-        _0xca7540 = _0x7d7487(0x27e) + Date[_0x7d7487(0x260)]() + (_0x7d7487(0x1f4) + 'm'),
-        _0x1386da = {
-            'uid': _0x249992,
-            'email': _0xca7540,
-            'displayName': _0x426770[_0x7d7487(0x203)](acakName),
-            'photoURL': _0x426770[_0x7d7487(0x207)],
-            'appId': _0x426770[_0x7d7487(0x284)]
-        },
-        _0x4cde04 = await _0x292e7b[_0x7d7487(0x1f3)](BASE_URL + (_0x7d7487(0x24d) + _0x7d7487(0x27d) + 'r'), _0x1386da, {
-            'headers': {
-                'content-type': _0x426770[_0x7d7487(0x20f)],
-                'accept': _0x426770[_0x7d7487(0x20f)],
-                'user-agent': _0x426770[_0x7d7487(0x268)]
-            }
-        });
-    if (_0x4cde04[_0x7d7487(0x226)][_0x7d7487(0x22c)]) return _0x249992;
-    throw new Error(_0x426770[_0x7d7487(0x202)](_0x426770[_0x7d7487(0x25e)], JSON[_0x7d7487(0x267)](_0x4cde04[_0x7d7487(0x226)])));
-}
-async function img2img(_0x47ea79, _0x278c6c) {
-    const _0x956bb7 = _0x37affc,
-        _0x316ec9 = {
-            'hobqh': function (_0x4aec8b) {
-                return _0x4aec8b();
-            },
-            'AUlQj': _0x956bb7(0x222),
-            'XkyWR': _0x956bb7(0x243),
-            'UQyNo': _0x956bb7(0x214),
-            'ikexZ': _0x956bb7(0x20a),
-            'ryvym': _0x956bb7(0x213),
-            'JlpfH': _0x956bb7(0x215) + _0x956bb7(0x253),
-            'dfHMY': _0x956bb7(0x1fe) + '.2',
-            'dhEgj': _0x956bb7(0x27f),
-            'GMVbO': _0x956bb7(0x263),
-            'Wkyhj': function (_0xe6255e, _0x4b5841) {
-                return _0xe6255e !== _0x4b5841;
-            },
-            'KKQbs': _0x956bb7(0x1ff),
-            'yBZaV': function (_0x310514, _0x2e26de) {
-                return _0x310514 === _0x2e26de;
-            },
-            'bnotW': _0x956bb7(0x208) + _0x956bb7(0x1f8) + _0x956bb7(0x220),
-            'XBAPR': _0x956bb7(0x240) + 'r'
-        },
-        _0xad6695 = await _0x316ec9[_0x956bb7(0x251)](autoregist),
-        _0x507eb7 = new _0x480377();
-    _0x507eb7[_0x956bb7(0x209)](_0x316ec9[_0x956bb7(0x25f)], _0x47ea79, {
-        'filename': _0x316ec9[_0x956bb7(0x200)],
-        'contentType': _0x316ec9[_0x956bb7(0x278)]
-    }), _0x507eb7[_0x956bb7(0x209)](_0x316ec9[_0x956bb7(0x20e)], _0x278c6c), _0x507eb7[_0x956bb7(0x209)](_0x316ec9[_0x956bb7(0x26f)], _0xad6695);
-    const _0x38f0bf = await _0x292e7b[_0x956bb7(0x1f3)](BASE_URL + (_0x956bb7(0x24d) + _0x956bb7(0x280) + _0x956bb7(0x283)), _0x507eb7, {
-        'headers': {
-            ..._0x507eb7[_0x956bb7(0x261)](),
-            'accept': _0x316ec9[_0x956bb7(0x1fb)],
-            'user-agent': _0x316ec9[_0x956bb7(0x24c)],
-            'accept-encoding': _0x316ec9[_0x956bb7(0x1f9)]
-        }
-    });
-    if (!_0x38f0bf[_0x956bb7(0x226)][_0x956bb7(0x22c)]) throw new Error(JSON[_0x956bb7(0x267)](_0x38f0bf[_0x956bb7(0x226)]));
-    const {
-        pollingUrl: _0x515732
-    } = _0x38f0bf[_0x956bb7(0x226)];
-    let _0x510f27 = _0x316ec9[_0x956bb7(0x275)],
-        _0x216137 = null;
-    while (_0x316ec9[_0x956bb7(0x24e)](_0x510f27, _0x316ec9[_0x956bb7(0x281)])) {
-        const _0x22ad17 = await _0x292e7b[_0x956bb7(0x282)](_0x515732, {
-            'headers': {
-                'accept': _0x316ec9[_0x956bb7(0x1fb)],
-                'user-agent': _0x316ec9[_0x956bb7(0x24c)]
-            }
-        });
-        _0x510f27 = _0x22ad17[_0x956bb7(0x226)][_0x956bb7(0x236)];
-        if (_0x316ec9[_0x956bb7(0x22e)](_0x510f27, _0x316ec9[_0x956bb7(0x281)])) {
-            _0x216137 = _0x22ad17[_0x956bb7(0x226)][_0x956bb7(0x21b)][_0x956bb7(0x273)];
-            break;
-        }
-        await new Promise(_0x3fc9ca => setTimeout(_0x3fc9ca, 0x1f27 + 0x1 * 0x172b + -0x2a9a));
-    }
-    if (!_0x216137) throw new Error(_0x316ec9[_0x956bb7(0x23d)]);
-    const _0x118772 = await _0x292e7b[_0x956bb7(0x282)](_0x216137, {
-        'responseType': _0x316ec9[_0x956bb7(0x259)]
-    });
-    return Buffer[_0x956bb7(0x26c)](_0x118772[_0x956bb7(0x226)]);
-}
-const handler = async (_0x356008, {
-    conn: _0x37b632,
-    args: _0x36ffb5
-}) => {
-    const _0x57df88 = _0x37affc,
-        _0x4fbbc0 = {
-            'SAYrJ': _0x57df88(0x223) + _0x57df88(0x242) + _0x57df88(0x22f) + _0x57df88(0x212),
-            'vkLtX': _0x57df88(0x256),
-            'QMlEu': _0x57df88(0x206) + _0x57df88(0x211) + _0x57df88(0x1f5),
-            'TYIha': function (_0x439490, _0x38c79e, _0x3e72c3) {
-                return _0x439490(_0x38c79e, _0x3e72c3);
-            },
-            'YrfLs': _0x57df88(0x27b)
-        };
-    try {
-        const _0x4a3140 = _0x356008[_0x57df88(0x23f)]?. [_0x57df88(0x205)] || '';
-        if (!/image/ [_0x57df88(0x27a)](_0x4a3140)) return _0x356008[_0x57df88(0x201)](_0x4fbbc0[_0x57df88(0x245)]);
-        _0x356008[_0x57df88(0x201)](_0x4fbbc0[_0x57df88(0x21c)]);
-        const _0x51278f = await _0x356008[_0x57df88(0x23f)][_0x57df88(0x23c)]();
-        if (!_0x51278f) return _0x356008[_0x57df88(0x201)](_0x4fbbc0[_0x57df88(0x21e)]);
-        const _0x58b866 = await _0x4fbbc0[_0x57df88(0x24a)](img2img, _0x51278f, PROMPT);
-        await _0x37b632[_0x57df88(0x239)](_0x356008[_0x57df88(0x1fd)], _0x58b866, _0x4fbbc0[_0x57df88(0x262)], '', _0x356008);
-    } catch (_0x1239b8) {
-        _0x356008[_0x57df88(0x201)](_0x57df88(0x227) + ' ' + _0x1239b8[_0x57df88(0x234)]);
-    }
-};
+  const uid = crypto.randomBytes(12).toString("hex");
+  const email = `gienetic${Date.now()}@nyahoo.com`;
 
-handler.help = ['tofigure']
-handler.tags = ['ai']
-handler.command = ['tofigure']
+  const payload = {
+    uid,
+    email,
+    displayName: acakName(),
+    photoURL: "https://i.pravatar.cc/150",
+    appId: "photogpt",
+  };
 
-export default handler
+  const res = await axios.post(`${BASE_URL}/photogpt/create-user`, payload, {
+    headers: {
+      "content-type": "application/json",
+      accept: "application/json",
+      "user-agent": "okhttp/4.9.2",
+    },
+  });
+
+  if (res.data.success) return uid;
+  throw new Error("Register gagal cuy: " + JSON.stringify(res.data));
+}
+
+async function img2img(imageBuffer, prompt) {
+  const uid = await autoregist();
+
+  const form = new FormData();
+  form.append("image", imageBuffer, { filename: "input.jpg", contentType: "image/jpeg" });
+  form.append("prompt", prompt);
+  form.append("userId", uid);
+
+  const uploadRes = await axios.post(`${BASE_URL}/photogpt/generate-image`, form, {
+    headers: {
+      ...form.getHeaders(),
+      accept: "application/json",
+      "user-agent": "okhttp/4.9.2",
+      "accept-encoding": "gzip",
+    },
+  });
+
+  if (!uploadRes.data.success) throw new Error(JSON.stringify(uploadRes.data));
+
+  const { pollingUrl } = uploadRes.data;
+  let status = "pending";
+  let resultUrl = null;
+
+  while (status !== "Ready") {
+    const pollRes = await axios.get(pollingUrl, {
+      headers: { accept: "application/json", "user-agent": "okhttp/4.9.2" },
+    });
+    status = pollRes.data.status;
+    if (status === "Ready") {
+      resultUrl = pollRes.data.result.url;
+      break;
+    }
+    await new Promise((r) => setTimeout(r, 3000));
+  }
+
+  if (!resultUrl) throw new Error("Gagal mendapatkan hasil gambar.");
+
+  const resultImg = await axios.get(resultUrl, { responseType: "arraybuffer" });
+  return Buffer.from(resultImg.data);
+}
