@@ -1,171 +1,102 @@
-(function (_0x3c2157, _0x1799e2) {
-    const _0x12cf33 = _0x27ab,
-        _0x21d845 = _0x3c2157();
-    while (!![]) {
-        try {
-            const _0x43b09b = parseInt(_0x12cf33(0xf8)) / (0x1adc + -0x215 + -0x18c6) + -parseInt(_0x12cf33(0xde)) / (0xbc4 + 0x13f0 + -0x1fb2) + parseInt(_0x12cf33(0xe9)) / (-0x12c4 * -0x1 + 0x187f + -0x2b40) * (-parseInt(_0x12cf33(0x108)) / (0xb3 * -0x2c + 0x8cd + -0x14b * -0x11)) + -parseInt(_0x12cf33(0xc4)) / (0x1 * 0x2cd + 0xc3f * -0x1 + -0x1 * -0x977) + parseInt(_0x12cf33(0xf0)) / (-0x2554 + 0x5b1 + 0x1fa9) + -parseInt(_0x12cf33(0xfb)) / (-0x2201 + -0x1c81 + 0x3e89) * (parseInt(_0x12cf33(0xb5)) / (-0x88d * 0x1 + 0xe2 * -0xb + 0x124b)) + parseInt(_0x12cf33(0xc7)) / (0x942 + -0xf86 * -0x1 + 0x389 * -0x7);
-            if (_0x43b09b === _0x1799e2) break;
-            else _0x21d845['push'](_0x21d845['shift']());
-        } catch (_0x10f03b) {
-            _0x21d845['push'](_0x21d845['shift']());
+import axios from 'axios'
+import FormData from 'form-data'
+
+async function translateToEnglish(text) {
+    try {
+        const url = "https://translate.googleapis.com/translate_a/single"
+        const params = {
+            client: "gtx",
+            sl: "auto",
+            tl: "en",
+            dt: "t",
+            q: text,
         }
+        const res = await axios.get(url, { params })
+        return res.data[0][0][0]
+    } catch (err) {
+        return text
     }
-}(_0x49f5, 0x3263f * 0x2 + -0x8c719 + 0x3ab3 * 0x29));
-function _0x27ab(_0xa03952, _0x2b9e3d) {
-    const _0x5dd95e = _0x49f5();
-    return _0x27ab = function (_0x12ecb4, _0x360474) {
-        _0x12ecb4 = _0x12ecb4 - (-0x4 * -0xfa + -0x24e2 + -0x1fb * -0x11);
-        let _0x53d25f = _0x5dd95e[_0x12ecb4];
-        return _0x53d25f;
-    }, _0x27ab(_0xa03952, _0x2b9e3d);
 }
-import _0x255435 from 'axios';
-import _0xf4d352 from 'form-data';
-async function translateToEnglish(_0x191b40) {
-    const _0x130ef0 = _0x27ab,
-        _0x476ee5 = {
-            'AvEem': _0x130ef0(0x111) + _0x130ef0(0xbb) + _0x130ef0(0xc3) + _0x130ef0(0xba) + _0x130ef0(0x115) + 'e',
-            'Mcpcf': _0x130ef0(0x114),
-            'yvUZu': _0x130ef0(0x103)
-        };
+
+async function creartTxt2Img(prompt) {
     try {
-        const _0x2401cb = _0x476ee5[_0x130ef0(0x10a)],
-            _0xe705fb = {
-                'client': _0x476ee5[_0x130ef0(0x109)],
-                'sl': _0x476ee5[_0x130ef0(0xee)],
-                'tl': 'en',
-                'dt': 't',
-                'q': _0x191b40
-            },
-            _0x219db8 = await _0x255435[_0x130ef0(0xb7)](_0x2401cb, {
-                'params': _0xe705fb
-            });
-        return _0x219db8[_0x130ef0(0x106)][-0x1552 + -0x506 + 0x1a58][-0x9 * -0x176 + -0x35 * -0x58 + -0x1f5e][-0xc1 * -0x2b + -0x1 * 0x14db + -0x4a * 0x28];
-    } catch (_0x22061f) {
-        return _0x191b40;
-    }
-}
-async function creartTxt2Img(_0x45513f) {
-    const _0xd6b196 = _0x27ab,
-        _0x413007 = {
-            'YzasT': function (_0x5d4e23, _0x5b0a76) {
-                return _0x5d4e23(_0x5b0a76);
-            },
-            'TVuQG': _0xd6b196(0x105),
-            'JXFXw': _0xd6b196(0xd7) + _0xd6b196(0xb8),
-            'wgzFK': _0xd6b196(0xdc),
-            'SFIFQ': _0xd6b196(0xd6) + 'io',
-            'eQMoJ': _0xd6b196(0x10d),
-            'dEfWE': _0xd6b196(0xf7) + _0xd6b196(0xb3),
-            'TtVXu': _0xd6b196(0x10e),
-            'ttBop': _0xd6b196(0xd0) + _0xd6b196(0xcb) + _0xd6b196(0xb9),
-            'dQcbc': _0xd6b196(0xc5),
-            'ssHJF': _0xd6b196(0xbe) + _0xd6b196(0x102) + _0xd6b196(0xc9) + _0xd6b196(0xd4) + 'ge',
-            'xKQdn': _0xd6b196(0xff) + 'r'
-        };
-    try {
-        const _0x1cd905 = await _0x413007[_0xd6b196(0xe3)](translateToEnglish, _0x45513f),
-            _0x1359e6 = new _0xf4d352();
-        _0x1359e6[_0xd6b196(0xe8)](_0x413007[_0xd6b196(0xb6)], _0x1cd905), _0x1359e6[_0xd6b196(0xe8)](_0x413007[_0xd6b196(0xc0)], _0x413007[_0xd6b196(0xd3)]), _0x1359e6[_0xd6b196(0xe8)](_0x413007[_0xd6b196(0x113)], _0x413007[_0xd6b196(0xef)]), _0x1359e6[_0xd6b196(0xe8)](_0x413007[_0xd6b196(0x110)], _0x413007[_0xd6b196(0xdd)]), _0x1359e6[_0xd6b196(0xe8)](_0x413007[_0xd6b196(0xe4)], _0x413007[_0xd6b196(0xf9)]);
-        const _0x24f917 = await _0x255435[_0xd6b196(0xfe)](_0x413007[_0xd6b196(0xd2)], _0x1359e6, {
-            'headers': _0x1359e6[_0xd6b196(0xed)](),
-            'responseType': _0x413007[_0xd6b196(0xe0)]
-        });
-        return Buffer[_0xd6b196(0x10c)](_0x24f917[_0xd6b196(0x106)]);
-    } catch (_0x2aa1f5) {
-        throw new Error(_0x2aa1f5?. [_0xd6b196(0xf4)] || _0x2aa1f5);
-    }
-}
-async function creartImg2Img(_0x37e4ca, _0x45c3f1) {
-    const _0x3ab398 = _0x27ab,
-        _0x371391 = {
-            'uGJft': function (_0x47d577, _0x15b143) {
-                return _0x47d577(_0x15b143);
-            },
-            'OKYDn': _0x3ab398(0x105),
-            'qoYIY': _0x3ab398(0xd7) + _0x3ab398(0xb8),
-            'CAukl': _0x3ab398(0xd5) + 'e',
-            'yPnCr': _0x3ab398(0xd6) + 'io',
-            'bcfuY': _0x3ab398(0x10d),
-            'DPYbV': _0x3ab398(0xf7) + _0x3ab398(0xb3),
-            'ReCAp': _0x3ab398(0x10e),
-            'Cevpt': _0x3ab398(0xd0) + _0x3ab398(0xcb) + _0x3ab398(0xb9),
-            'mdEMu': _0x3ab398(0xc5),
-            'ftVZu': _0x3ab398(0xe7),
-            'YGJPm': _0x3ab398(0xe2),
-            'FrIHP': _0x3ab398(0xbe) + _0x3ab398(0x102) + _0x3ab398(0xc9) + _0x3ab398(0xce) + _0x3ab398(0xb2),
-            'JQSum': _0x3ab398(0xff) + 'r'
-        };
-    try {
-        const _0x1d190c = await _0x371391[_0x3ab398(0xcc)](translateToEnglish, _0x37e4ca),
-            _0x317c22 = new _0xf4d352();
-        _0x317c22[_0x3ab398(0xe8)](_0x371391[_0x3ab398(0xf3)], _0x1d190c), _0x317c22[_0x3ab398(0xe8)](_0x371391[_0x3ab398(0x10b)], _0x371391[_0x3ab398(0xc1)]), _0x317c22[_0x3ab398(0xe8)](_0x371391[_0x3ab398(0xcd)], _0x371391[_0x3ab398(0xfd)]), _0x317c22[_0x3ab398(0xe8)](_0x371391[_0x3ab398(0x104)], _0x371391[_0x3ab398(0xd1)]), _0x317c22[_0x3ab398(0xe8)](_0x371391[_0x3ab398(0x101)], _0x371391[_0x3ab398(0xe5)]), _0x317c22[_0x3ab398(0xe8)](_0x371391[_0x3ab398(0xeb)], _0x45c3f1, _0x371391[_0x3ab398(0xc6)]);
-        const _0x81942a = await _0x255435[_0x3ab398(0xfe)](_0x371391[_0x3ab398(0xc2)], _0x317c22, {
-            'headers': _0x317c22[_0x3ab398(0xed)](),
-            'responseType': _0x371391[_0x3ab398(0xb4)]
-        });
-        return Buffer[_0x3ab398(0x10c)](_0x81942a[_0x3ab398(0x106)]);
-    } catch (_0x27936c) {
-        throw new Error(_0x27936c?. [_0x3ab398(0xf4)] || _0x27936c);
-    }
-}
-function _0x49f5() {
-    const _0x70397f = ['creart', 'guidance_s', '857344tFLDyn', 'dQcbc', 'chat', '35NeZfPt', 'startsWith', 'bcfuY', 'post', 'arraybuffe', 'Mna Gambar', 'Cevpt', 'i.creartai', 'auto', 'DPYbV', 'prompt', 'data', 'mandangan ', '232276nyDEMJ', 'Mcpcf', 'AvEem', 'qoYIY', 'from', '4x5', '9.5', 'rZdbP', 'dEfWE', 'https://tr', 'XBfqy', 'SFIFQ', 'gtx', 'te_a/singl', 'msg', 'LMIHx', 'Example : ', 'age', 'cale', 'JQSum', '190312EugUhV', 'TVuQG', 'get', 'e_type', 'ing_scale', 'om/transla', 'anslate.go', ' Nya Bang', '.creart Pe', 'https://ap', 'image/', 'JXFXw', 'CAukl', 'FrIHP', 'ogleapis.c', '2836685CKcPxm', '0.5', 'YGJPm', '2348127SnsIfq', 'join', '.com/api/v', 'quoted', '_condition', 'uGJft', 'yPnCr', '2/image2im', 'mage...', 'controlnet', 'ReCAp', 'ssHJF', 'wgzFK', '2/text2ima', 'image2imag', 'aspect_rat', 'input_imag', 'sendMessag', 'aqdez', 'vZroY', 'SvzLW', 'text2image', 'TtVXu', '264482ESMfXv', 'mimetype', 'xKQdn', 'download', 'image.png', 'YzasT', 'ttBop', 'mdEMu', 'Generate I', 'image_file', 'append', '33cxrZAE', 'LcLwo', 'ftVZu', 'Gunung Fuj', 'getHeaders', 'yvUZu', 'eQMoJ', '4756098EnvLlX', 'toLowerCas', 'img2img', 'OKYDn', 'message', 'reply'];
-    _0x49f5 = function () {
-        return _0x70397f;
-    };
-    return _0x49f5();
-}
-let handler = async (_0x206bf0, {
-    conn: _0x5d5e25,
-    command: _0x4fda77,
-    args: _0x562b23
-}) => {
-    const _0x176dea = _0x27ab,
-        _0x5f1393 = {
-            'XBfqy': _0x176dea(0xf6),
-            'SvzLW': _0x176dea(0xe6) + _0x176dea(0xcf),
-            'aqdez': function (_0x427892, _0x594ce8) {
-                return _0x427892(_0x594ce8);
-            },
-            'rZdbP': _0x176dea(0xf2),
-            'LcLwo': _0x176dea(0xbf),
-            'vZroY': _0x176dea(0x100) + _0x176dea(0xbc),
-            'LMIHx': function (_0x3d11c7, _0x574714, _0x5abc21) {
-                return _0x3d11c7(_0x574714, _0x5abc21);
+        const translatedPrompt = await translateToEnglish(prompt)
+        const form = new FormData()
+        form.append("prompt", translatedPrompt)
+        form.append("input_image_type", "text2image")
+        form.append("aspect_ratio", "4x5")
+        form.append("guidance_scale", "9.5")
+        form.append("controlnet_conditioning_scale", "0.5")
+        
+        const response = await axios.post(
+            "https://api.creartai.com/api/v2/text2image",
+            form,
+            {
+                headers: form.getHeaders(),
+                responseType: "arraybuffer",
             }
-        };
-    try {
-        const _0x7c1ff0 = _0x562b23[_0x176dea(0xc8)](' ');
-        if (!_0x7c1ff0) return _0x206bf0[_0x176dea(0xf5)](_0x176dea(0xb1) + _0x176dea(0xbd) + _0x176dea(0x107) + _0x176dea(0xec) + 'i');
-        switch (_0x4fda77[_0x176dea(0xf1) + 'e']()) {
-        case _0x5f1393[_0x176dea(0x112)]:
-            _0x206bf0[_0x176dea(0xf5)](_0x5f1393[_0x176dea(0xdb)]);
-            const _0x3adbc8 = await _0x5f1393[_0x176dea(0xd9)](creartTxt2Img, _0x7c1ff0);
-            await _0x5d5e25[_0x176dea(0xd8) + 'e'](_0x206bf0[_0x176dea(0xfa)], {
-                'image': _0x3adbc8
-            }, {
-                'quoted': _0x206bf0
-            });
-            break;
-        case _0x5f1393[_0x176dea(0x10f)]:
-            const _0x34ded7 = _0x206bf0[_0x176dea(0xca)] ? _0x206bf0[_0x176dea(0xca)] : _0x206bf0,
-                _0x536e51 = (_0x34ded7[_0x176dea(0x116)] || _0x34ded7)[_0x176dea(0xdf)] || '';
-            if (!_0x536e51[_0x176dea(0xfc)](_0x5f1393[_0x176dea(0xea)])) return _0x206bf0[_0x176dea(0xf5)](_0x5f1393[_0x176dea(0xda)]);
-            _0x206bf0[_0x176dea(0xf5)](_0x5f1393[_0x176dea(0xdb)]);
-            const _0x317617 = await _0x34ded7[_0x176dea(0xe1)](),
-                _0x33a121 = await _0x5f1393[_0x176dea(0x117)](creartImg2Img, _0x7c1ff0, _0x317617);
-            await _0x5d5e25[_0x176dea(0xd8) + 'e'](_0x206bf0[_0x176dea(0xfa)], {
-                'image': _0x33a121
-            }, {
-                'quoted': _0x206bf0
-            });
-            break;
-        }
-    } catch (_0x1cb984) {
-        _0x206bf0[_0x176dea(0xf5)](_0x1cb984[_0x176dea(0xf4)]);
+        )
+        return Buffer.from(response.data)
+    } catch (err) {
+        throw new Error(err?.message || err)
     }
-};
+}
+
+async function creartImg2Img(prompt, imageBuffer) {
+    try {
+        const translatedPrompt = await translateToEnglish(prompt)
+        const form = new FormData()
+        form.append("prompt", translatedPrompt)
+        form.append("input_image_type", "image2image")
+        form.append("aspect_ratio", "4x5")
+        form.append("guidance_scale", "9.5")
+        form.append("controlnet_conditioning_scale", "0.5")
+        form.append("image_file", imageBuffer, "image.png")
+        
+        const response = await axios.post(
+            "https://api.creartai.com/api/v2/image2image",
+            form,
+            {
+                headers: form.getHeaders(),
+                responseType: "arraybuffer",
+            }
+        )
+        return Buffer.from(response.data)
+    } catch (err) {
+        throw new Error(err?.message || err)
+    }
+}
+
+let handler = async (m, { conn, command, args }) => {
+    try {
+        const prompt = args.join(' ')
+        if (!prompt) return m.reply(`Example : .creart Pemandangan Gunung Fuji`)
+
+        switch (command.toLowerCase()) {
+            case 'creart':
+                m.reply('Generate Image...')
+                const txtBuffer = await creartTxt2Img(prompt)
+                await conn.sendMessage(m.chat, {
+                    image: txtBuffer,
+                }, { quoted: m })
+                break
+
+            case 'img2img':
+                const q = m.quoted ? m.quoted : m
+                const mime = (q.msg || q).mimetype || ''
+                if (!mime.startsWith('image/')) return m.reply('Mna Gambar Nya Bang')
+                m.reply('Generate Image...')
+                const imageBuffer = await q.download()
+                const imgBuffer = await creartImg2Img(prompt, imageBuffer)
+                await conn.sendMessage(m.chat, {
+                    image: imgBuffer,
+                }, { quoted: m })
+                break
+        }
+    } catch (e) {
+        m.reply(e.message)
+    }
+}
 
 handler.help = ['creart', 'img2img']
 handler.command = ['creart', 'img2img']

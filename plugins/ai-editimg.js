@@ -1,178 +1,75 @@
-const _0x458e9d = _0x3685;
-(function (_0x722150, _0x4b910c) {
-    const _0x405f2e = _0x3685,
-        _0x6b6a41 = _0x722150();
-    while (!![]) {
-        try {
-            const _0x106869 = -parseInt(_0x405f2e(0x19f)) / (-0xb * -0x209 + 0x1215 * -0x1 + -0x3 * 0x16f) * (-parseInt(_0x405f2e(0x19a)) / (0x222 + -0x1fc8 + 0x1da8)) + -parseInt(_0x405f2e(0x1a3)) / (-0x11c0 + -0x1685 + 0xa12 * 0x4) * (-parseInt(_0x405f2e(0x1bf)) / (0x6 * 0x45d + -0x1 * -0x35e + -0x1d88)) + -parseInt(_0x405f2e(0x172)) / (-0x1 * 0x1630 + -0x13bb + 0x14f8 * 0x2) + parseInt(_0x405f2e(0x1d5)) / (0x77c + -0x325 + -0x451) * (-parseInt(_0x405f2e(0x17f)) / (-0x1 * -0xcab + -0xa2a + -0x13d * 0x2)) + -parseInt(_0x405f2e(0x175)) / (-0xf2e + -0x1cf * -0xc + -0x67e) * (parseInt(_0x405f2e(0x1d2)) / (-0x2 * -0x1092 + -0x222a + 0x10f)) + -parseInt(_0x405f2e(0x1aa)) / (0x2 * 0x69d + 0x1f9a + -0x2cca) * (-parseInt(_0x405f2e(0x1d0)) / (-0xf1 * -0xb + -0x813 + 0x1 * -0x23d)) + -parseInt(_0x405f2e(0x1d1)) / (-0x1 * -0x1631 + -0x3a * 0x1 + -0x15eb) * (-parseInt(_0x405f2e(0x1c8)) / (-0x11 + 0xc3 * -0x28 + 0x20a * 0xf));
-            if (_0x106869 === _0x4b910c) break;
-            else _0x6b6a41['push'](_0x6b6a41['shift']());
-        } catch (_0x5e6c01) {
-            _0x6b6a41['push'](_0x6b6a41['shift']());
-        }
-    }
-}(_0x57a8, -0x3235a + 0x189 * 0x265 + 0xf9 * 0x196));
-import _0x534956 from 'axios';
-import _0x45a716 from 'form-data';
-import _0x5574fb from 'crypto';
-function _0x3685(_0x4897b4, _0x54ceb0) {
-    const _0x227ade = _0x57a8();
-    return _0x3685 = function (_0x25bcd7, _0x3cc66b) {
-        _0x25bcd7 = _0x25bcd7 - (0x5 * 0x75e + -0x9d * 0x32 + 0x197 * -0x3);
-        let _0x1cfcc6 = _0x227ade[_0x25bcd7];
-        return _0x1cfcc6;
-    }, _0x3685(_0x4897b4, _0x54ceb0);
-}
-function _0x57a8() {
-    const _0xc89797 = ['n/json', 'download', 'append', 'LzsNy', '81376dYIKxO', 'stringify', 'length', 'image', 'result', 'sendMessag', 'uvwxyz', 'Gwlic', 'Please Wai', '82849QUDmdb', 'xxAIN', 'gzip', 'random', 'Ielxs', 'klmnopqrst', 'toString', 'quoted', '66bKhdso', '60IFtQKN', '1656lTnCyF', 'photogpt', 'https://ai', '30RMlfJx', 'pending', 'sil gambar', 'uZehC', 'gienetic', 'create-use', 'ion .editi', 'FMGgF', 'mSscb', 'applicatio', 'qGyxQ', 'c/150', 'AQrKy', 't...', '931210dNhXuW', 'arraybuffe', 'bgHxT', '4456FouBlR', 'hex', 'NrKWd', 'generate-i', 'randomByte', 'get', 'Mana gamba', 'success', 'ReeGB', 'join', '6167oWSpum', 'agal: ', 'WvTKq', 'abcdefghij', 'apatkan ha', 'floor', 'Awvzu', 'image/jpeg', 'mage', 'OQuEx', 'status', 'eDEcz', 'data', 'ocWwp', 'eGOno', 'engan Capt', 'https://i.', 'rgautam.de', 'reply', 'chat', 'userId', 'pravatar.c', 'XRApe', 'Gagal mend', 'mimetype', 'input.jpg', 'message', '50YxtwLu', 'mg <promt>', 'from', 'Ready', '-apps.code', '10173lZInTO', 'oxwRU', 'GLidz', 'm Gambar D', '12WtVjtC', 'image/', 'SidiH', 'okhttp/4.9', 'XETzY', '@nyahoo.co', 'CDbNI', '103190TcVelX', 'Register g', 'msg', 'rnya', 'Reply/Kiri', 'startsWith', 'now', 'KboGy', 'WXcpo', 'post', 'dGpYC', 'url', 'KDmBK', '/photogpt/', 'ANwQI', 'prompt', 'getHeaders'];
-    _0x57a8 = function () {
-        return _0xc89797;
-    };
-    return _0x57a8();
-}
-let BASE_URL = _0x458e9d(0x1d4) + _0x458e9d(0x19e) + _0x458e9d(0x190) + 'v';
-function acakName(_0x331199 = 0x24 * 0x23 + 0x5ca + -0xaac) {
-    const _0x3d82c9 = _0x458e9d,
-        _0x577952 = {
-            'bgHxT': _0x3d82c9(0x182) + _0x3d82c9(0x1cd) + _0x3d82c9(0x1c5)
-        },
-        _0x2e6886 = _0x577952[_0x3d82c9(0x174)];
-    return Array[_0x3d82c9(0x19c)]({
-        'length': _0x331199
-    }, () => _0x2e6886[Math[_0x3d82c9(0x184)](Math[_0x3d82c9(0x1cb)]() * _0x2e6886[_0x3d82c9(0x1c1)])])[_0x3d82c9(0x17e)]('');
-}
-async function autoregist() {
-    const _0x12cd6d = _0x458e9d,
-        _0x3f6a3d = {
-            'qGyxQ': _0x12cd6d(0x176),
-            'LzsNy': function (_0x1fb7f6) {
-                return _0x1fb7f6();
-            },
-            'WXcpo': _0x12cd6d(0x18f) + _0x12cd6d(0x194) + _0x12cd6d(0x16f),
-            'XETzY': _0x12cd6d(0x1d3),
-            'NrKWd': _0x12cd6d(0x16d) + _0x12cd6d(0x1bb),
-            'SidiH': _0x12cd6d(0x1a6) + '.2',
-            'WvTKq': function (_0x305c4d, _0xf059b8) {
-                return _0x305c4d + _0xf059b8;
-            },
-            'OQuEx': _0x12cd6d(0x1ab) + _0x12cd6d(0x180)
-        };
-    let _0x313bb7 = _0x5574fb[_0x12cd6d(0x179) + 's'](-0x8ad * -0x1 + -0x16e5 * 0x1 + 0x391 * 0x4)[_0x12cd6d(0x1ce)](_0x3f6a3d[_0x12cd6d(0x16e)]),
-        _0x4693f4 = _0x12cd6d(0x168) + Date[_0x12cd6d(0x1b0)]() + (_0x12cd6d(0x1a8) + 'm'),
-        _0x21644f = await _0x534956[_0x12cd6d(0x1b3)](BASE_URL + (_0x12cd6d(0x1b7) + _0x12cd6d(0x169) + 'r'), {
-            'uid': _0x313bb7,
-            'email': _0x4693f4,
-            'displayName': _0x3f6a3d[_0x12cd6d(0x1be)](acakName),
-            'photoURL': _0x3f6a3d[_0x12cd6d(0x1b2)],
-            'appId': _0x3f6a3d[_0x12cd6d(0x1a7)]
-        }, {
-            'headers': {
-                'content-type': _0x3f6a3d[_0x12cd6d(0x177)],
-                'accept': _0x3f6a3d[_0x12cd6d(0x177)],
-                'user-agent': _0x3f6a3d[_0x12cd6d(0x1a5)]
-            }
-        });
-    if (_0x21644f[_0x12cd6d(0x18b)][_0x12cd6d(0x17c)]) return _0x313bb7;
-    throw new Error(_0x3f6a3d[_0x12cd6d(0x181)](_0x3f6a3d[_0x12cd6d(0x188)], JSON[_0x12cd6d(0x1c0)](_0x21644f[_0x12cd6d(0x18b)])));
-}
-async function img2img(_0x192ae4, _0x160827) {
-    const _0x38880f = _0x458e9d,
-        _0x4e90e2 = {
-            'ocWwp': function (_0x212368) {
-                return _0x212368();
-            },
-            'XRApe': _0x38880f(0x1c2),
-            'eDEcz': _0x38880f(0x198),
-            'Awvzu': _0x38880f(0x186),
-            'CDbNI': _0x38880f(0x1b9),
-            'xxAIN': _0x38880f(0x193),
-            'FMGgF': _0x38880f(0x16d) + _0x38880f(0x1bb),
-            'uZehC': _0x38880f(0x1a6) + '.2',
-            'eGOno': _0x38880f(0x1ca),
-            'oxwRU': _0x38880f(0x1d6),
-            'GLidz': function (_0x13f232, _0x2ac185) {
-                return _0x13f232 !== _0x2ac185;
-            },
-            'Ielxs': _0x38880f(0x19d),
-            'ANwQI': function (_0x39f627, _0x58c1bc) {
-                return _0x39f627 === _0x58c1bc;
-            },
-            'KboGy': _0x38880f(0x196) + _0x38880f(0x183) + _0x38880f(0x1d7),
-            'mSscb': _0x38880f(0x173) + 'r'
-        };
-    let _0x54658e = await _0x4e90e2[_0x38880f(0x18c)](autoregist),
-        _0x450bc6 = new _0x45a716();
-    _0x450bc6[_0x38880f(0x1bd)](_0x4e90e2[_0x38880f(0x195)], _0x192ae4, {
-        'filename': _0x4e90e2[_0x38880f(0x18a)],
-        'contentType': _0x4e90e2[_0x38880f(0x185)]
-    }), _0x450bc6[_0x38880f(0x1bd)](_0x4e90e2[_0x38880f(0x1a9)], _0x160827), _0x450bc6[_0x38880f(0x1bd)](_0x4e90e2[_0x38880f(0x1c9)], _0x54658e);
-    let _0x42e5ea = await _0x534956[_0x38880f(0x1b3)](BASE_URL + (_0x38880f(0x1b7) + _0x38880f(0x178) + _0x38880f(0x187)), _0x450bc6, {
-        'headers': {
-            ..._0x450bc6[_0x38880f(0x1ba)](),
-            'accept': _0x4e90e2[_0x38880f(0x16b)],
-            'user-agent': _0x4e90e2[_0x38880f(0x167)],
-            'accept-encoding': _0x4e90e2[_0x38880f(0x18d)]
-        }
-    });
-    if (!_0x42e5ea[_0x38880f(0x18b)][_0x38880f(0x17c)]) throw new Error(JSON[_0x38880f(0x1c0)](_0x42e5ea[_0x38880f(0x18b)]));
-    let {
-        pollingUrl: _0x1d97ad
-    } = _0x42e5ea[_0x38880f(0x18b)], _0x2a958b = _0x4e90e2[_0x38880f(0x1a0)], _0x48b632 = null;
-    while (_0x4e90e2[_0x38880f(0x1a1)](_0x2a958b, _0x4e90e2[_0x38880f(0x1cc)])) {
-        let _0x455454 = await _0x534956[_0x38880f(0x17a)](_0x1d97ad, {
-            'headers': {
-                'accept': _0x4e90e2[_0x38880f(0x16b)],
-                'user-agent': _0x4e90e2[_0x38880f(0x167)]
-            }
-        });
-        _0x2a958b = _0x455454[_0x38880f(0x18b)][_0x38880f(0x189)];
-        if (_0x4e90e2[_0x38880f(0x1b8)](_0x2a958b, _0x4e90e2[_0x38880f(0x1cc)])) {
-            _0x48b632 = _0x455454[_0x38880f(0x18b)][_0x38880f(0x1c3)][_0x38880f(0x1b5)];
-            break;
-        }
-        await new Promise(_0x38becd => setTimeout(_0x38becd, 0xa4 * 0x36 + 0x2 * -0x67 + 0xb09 * -0x2));
-    }
-    if (!_0x48b632) throw new Error(_0x4e90e2[_0x38880f(0x1b1)]);
-    let _0x559cce = await _0x534956[_0x38880f(0x17a)](_0x48b632, {
-        'responseType': _0x4e90e2[_0x38880f(0x16c)]
-    });
-    return Buffer[_0x38880f(0x19c)](_0x559cce[_0x38880f(0x18b)]);
-}
-let handler = async (_0x443334, {
-    conn: _0x5d3941,
-    args: _0x45b6f7
-}) => {
-    const _0xf94d5a = _0x458e9d,
-        _0x1e605a = {
-            'Gwlic': _0xf94d5a(0x1a4),
-            'AQrKy': _0xf94d5a(0x17b) + _0xf94d5a(0x1ad),
-            'KDmBK': _0xf94d5a(0x1ae) + _0xf94d5a(0x1a2) + _0xf94d5a(0x18e) + _0xf94d5a(0x16a) + _0xf94d5a(0x19b) + ' ',
-            'dGpYC': _0xf94d5a(0x1c7) + _0xf94d5a(0x171),
-            'ReeGB': function (_0x4edf73, _0x401e7b, _0x54c3aa) {
-                return _0x4edf73(_0x401e7b, _0x54c3aa);
-            }
-        };
-    try {
-        let _0x43b4a5 = _0x443334[_0xf94d5a(0x1cf)] ? _0x443334[_0xf94d5a(0x1cf)] : _0x443334,
-            _0x1a4fa0 = (_0x43b4a5[_0xf94d5a(0x1ac)] || _0x43b4a5)[_0xf94d5a(0x197)] || '';
-        if (!_0x1a4fa0[_0xf94d5a(0x1af)](_0x1e605a[_0xf94d5a(0x1c6)])) return _0x443334[_0xf94d5a(0x191)](_0x1e605a[_0xf94d5a(0x170)]);
-        if (!_0x45b6f7[-0x1 * 0x1f81 + 0x268a + -0x709]) return _0x443334[_0xf94d5a(0x191)](_0x1e605a[_0xf94d5a(0x1b6)]);
-        _0x443334[_0xf94d5a(0x191)](_0x1e605a[_0xf94d5a(0x1b4)]);
-        let _0x32fd76 = await _0x43b4a5[_0xf94d5a(0x1bc)](),
-            _0x44de95 = _0x45b6f7[_0xf94d5a(0x17e)](' '),
-            _0x1cd230 = await _0x1e605a[_0xf94d5a(0x17d)](img2img, _0x32fd76, _0x44de95);
-        await _0x5d3941[_0xf94d5a(0x1c4) + 'e'](_0x443334[_0xf94d5a(0x192)], {
-            'image': _0x1cd230
-        }, {
-            'quoted': _0x443334
-        });
-    } catch (_0x512a7e) {
-        _0x443334[_0xf94d5a(0x191)](_0x512a7e[_0xf94d5a(0x199)]);
-    }
-};
+import axios from 'axios'
+import FormData from 'form-data'
+import { Jimp } from 'jimp'
 
-handler.help = ['editimg']
-handler.command = ['editimg']
-handler.tags = ['ai']
+async function scrapeApiKey() {
+  let { data } = await axios.get('https://overchat.ai/image/ghibli', {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+  })
+  let match = data.match(/const apiKey = '([^']+)'/)
+  return match?.[1] || null
+}
+
+async function editImage(imageBuffer, prompt, apiKey) {
+  let form = new FormData()
+  form.append('image', imageBuffer, 'image.png')
+  form.append('prompt', prompt)
+  form.append('model', 'gpt-image-1')
+  form.append('n', 1)
+  form.append('size', '1024x1024')
+  form.append('quality', 'medium')
+
+  let { data } = await axios.post('https://api.openai.com/v1/images/edits', form, {
+    headers: {
+      ...form.getHeaders(),
+      'Authorization': `Bearer ${apiKey}`
+    }
+  })
+
+  return data.data?.[0]?.b64_json
+}
+
+let handler = async (m, { conn, args, command }) => {
+  try {
+    let q = m.quoted ? m.quoted : m
+    let mime = (q.msg || q).mimetype || ''
+    if (!mime.startsWith('image/')) return m.reply('Mana gambarnya')
+
+    m.reply('Wait...')
+
+    let mediaBuffer = await q.download()
+    let image = await Jimp.read(mediaBuffer)
+    let pngBuffer = await image.getBufferAsync(Jimp.MIME_PNG)
+
+    let apiKey = await scrapeApiKey()
+
+    let prompt
+    switch (command) {
+      case 'toghibli':
+        prompt = 'Please convert this image into Studio Ghibli art style'
+        break
+      case 'editimg':
+        if (!args.join(' ')) return m.reply('Kasoh Gambar nya + Promt editimg nya')
+        prompt = args.join(' ')
+        break
+    }
+
+    let base64Result = await editImage(pngBuffer, prompt, apiKey)
+    let resultBuffer = Buffer.from(base64Result, 'base64')
+
+    await conn.sendMessage(m.chat, {
+      image: resultBuffer,
+    }, { quoted: m })
+
+  } catch (e) {
+    m.reply(e.message)
+  }
+}
+
+handler.help = ['toghibli', 'editimg']
+handler.command = ['toghibli', 'editimg']
+handler.tags = ['tools']
 
 export default handler

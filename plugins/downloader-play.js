@@ -1,218 +1,116 @@
-(function (_0x19df35, _0x3244c1) {
-    const _0x158ed5 = _0x5bcd,
-        _0x2df8b9 = _0x19df35();
-    while (!![]) {
+import axios from 'axios';
+import fs from 'fs-extra';
+import ffmpeg from 'fluent-ffmpeg';
+
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+    if (!text) throw (`Contoh: ${usedPrefix + command} dj aku meriang`);
+
+    m.reply('Sedang mencari, tunggu sebentar...');
+
+    const apiUrl = 'https://api.fanzoffc.eu.org/api/ytdlbeta/';
+    const apiKey = 'FanzOffc';
+    const maxAttempts = 20;
+    let response = null;
+
+    let attempt = 0;
+    while (attempt < maxAttempts) {
         try {
-            const _0x26b4ec = -parseInt(_0x158ed5(0x19c)) / (0x301 * -0xd + -0x1 * -0x1436 + 0x12d8) * (parseInt(_0x158ed5(0x199)) / (0x1faa + 0x1ed0 * 0x1 + -0x3e78)) + parseInt(_0x158ed5(0x150)) / (0x22c5 + 0x204 + -0x416 * 0x9) + -parseInt(_0x158ed5(0x1a5)) / (-0xac0 + 0xffe + -0x53a) * (parseInt(_0x158ed5(0x17f)) / (0x28 * 0xa3 + -0x2558 + 0xbe5)) + -parseInt(_0x158ed5(0x130)) / (0x749 + -0xf * 0x1fc + 0x1681) + parseInt(_0x158ed5(0x13b)) / (-0xf4b * 0x1 + 0x1e5f + 0x1 * -0xf0d) * (parseInt(_0x158ed5(0x19d)) / (-0x2110 + -0x1176 + 0x328e)) + parseInt(_0x158ed5(0x188)) / (0xa0 * 0x23 + -0xd2b + -0x8ac) + -parseInt(_0x158ed5(0x1a3)) / (0x1c28 + 0x1e45 + -0x3a63) * (-parseInt(_0x158ed5(0x149)) / (0xb3 + -0x8 * 0x109 + 0x7a0));
-            if (_0x26b4ec === _0x3244c1) break;
-            else _0x2df8b9['push'](_0x2df8b9['shift']());
-        } catch (_0x2a35f7) {
-            _0x2df8b9['push'](_0x2df8b9['shift']());
+            attempt++;
+
+            response = await axios.get(apiUrl, {
+                params: {
+                    query: text,
+                    apikey: apiKey,
+                },
+            });
+
+            if (response.data && response.data.status) {
+                break;
+            } else {
+                throw new Error('Respon API tidak valid');
+            }
+        } catch (error) {
+            if (attempt === maxAttempts) {
+                console.error('Kesalahan setelah percobaan maksimal:', error.message);
+                throw `Gagal mendapatkan data setelah ${maxAttempts} percobaan.`;
+            }
+            console.log(`Percobaan ${attempt} gagal: ${error.message}. Mencoba lagi...`);
         }
     }
-}(_0xaf35, -0x49a59 * -0x1 + 0x7 * 0x33cdd + 0x9349 * -0x15));
-import _0x345fd4 from 'axios';
-import _0x5f4637 from 'crypto';
-import _0x5b339e from 'yt-search';
-function _0x5bcd(_0x445db3, _0x32edaa) {
-    const _0x2448be = _0xaf35();
-    return _0x5bcd = function (_0x89ad40, _0x581871) {
-        _0x89ad40 = _0x89ad40 - (0x4f1 + 0x16 * -0x1ac + 0x2106);
-        let _0x574157 = _0x2448be[_0x89ad40];
-        return _0x574157;
-    }, _0x5bcd(_0x445db3, _0x32edaa);
-}
-let handler = async (_0x32f9a5, {
-    conn: _0x549133,
-    text: _0x40db38
-}) => {
-    const _0x5138a6 = _0x5bcd,
-        _0x30ca65 = {
-            'cGGHP': _0x5138a6(0x151),
-            'HGDYc': _0x5138a6(0x18c) + _0x5138a6(0x191) + _0x5138a6(0x154) + '12',
-            'ANeBJ': _0x5138a6(0x171),
-            'evtRN': _0x5138a6(0x198) + 'c',
-            'MftTt': function (_0x55c59a, _0x24c4b3) {
-                return _0x55c59a(_0x24c4b3);
-            },
-            'dWHRR': _0x5138a6(0x176),
-            'Xohkl': function (_0x436f3e, _0x515392) {
-                return _0x436f3e === _0x515392;
-            },
-            'SDHZw': _0x5138a6(0x13e),
-            'bDLLI': _0x5138a6(0x1ba),
-            'WGKGt': _0x5138a6(0x134) + _0x5138a6(0x19b) + _0x5138a6(0x1b9),
-            'mKGfp': _0x5138a6(0x1ab),
-            'NgIDU': _0x5138a6(0x1b3),
-            'bJnpU': _0x5138a6(0x12f),
-            'vkRnJ': _0x5138a6(0x175),
-            'TIJaW': _0x5138a6(0x192),
-            'XvHet': function (_0x4fdc2f, _0x465e40) {
-                return _0x4fdc2f === _0x465e40;
-            },
-            'tzOEa': function (_0x528199, _0x38d8db) {
-                return _0x528199 === _0x38d8db;
-            },
-            'VAkiO': _0x5138a6(0x197) + _0x5138a6(0x15e) + _0x5138a6(0x16e),
-            'mDUTT': _0x5138a6(0x139) + _0x5138a6(0x162) + _0x5138a6(0x1aa),
-            'cXzmr': _0x5138a6(0x1b7) + 'n',
-            'TDQKo': _0x5138a6(0x138),
-            'juvRM': _0x5138a6(0x1b8),
-            'qcvFb': _0x5138a6(0x15a),
-            'REcYT': _0x5138a6(0x1a9) + _0x5138a6(0x15f),
-            'LPpOv': _0x5138a6(0x136) + _0x5138a6(0x135) + 'me',
-            'QzPQt': _0x5138a6(0x136) + _0x5138a6(0x135) + _0x5138a6(0x145),
-            'gbneQ': _0x5138a6(0x15d) + _0x5138a6(0x1b2),
-            'JrSmT': _0x5138a6(0x157),
-            'hmpFi': _0x5138a6(0x142),
-            'rzMCi': _0x5138a6(0x143),
-            'RRuSG': _0x5138a6(0x1a4),
-            'UBuTl': _0x5138a6(0x186),
-            'NoFsK': _0x5138a6(0x13f),
-            'KyEeJ': function (_0xa540dc, _0x58bc14) {
-                return _0xa540dc(_0x58bc14);
-            },
-            'WImUA': _0x5138a6(0x140) + _0x5138a6(0x16b) + _0x5138a6(0x14f),
-            'vMURj': _0x5138a6(0x168),
-            'aAEHy': _0x5138a6(0x14c) + _0x5138a6(0x161)
-        };
-    if (!_0x40db38) return _0x32f9a5[_0x5138a6(0x1b5)](_0x30ca65[_0x5138a6(0x16c)]);
-    await _0x549133[_0x5138a6(0x183) + 'e'](_0x32f9a5[_0x5138a6(0x17c)], {
-        'react': {
-            'text': '✨',
-            'key': _0x32f9a5[_0x5138a6(0x184)]
-        }
-    });
-    const _0x1014c2 = {
-        'api': {
-            'base': _0x30ca65[_0x5138a6(0x14a)],
-            'cdn': _0x30ca65[_0x5138a6(0x14d)],
-            'info': _0x30ca65[_0x5138a6(0x1b1)],
-            'download': _0x30ca65[_0x5138a6(0x195)]
-        },
-        'headers': {
-            'accept': _0x30ca65[_0x5138a6(0x177)],
-            'content-type': _0x30ca65[_0x5138a6(0x19e)],
-            'origin': _0x30ca65[_0x5138a6(0x1b6)],
-            'referer': _0x30ca65[_0x5138a6(0x18d)],
-            'user-agent': _0x30ca65[_0x5138a6(0x1b0)]
-        },
-        'formats': [_0x30ca65[_0x5138a6(0x18f)], _0x30ca65[_0x5138a6(0x131)], _0x30ca65[_0x5138a6(0x1ae)], _0x30ca65[_0x5138a6(0x181)], _0x30ca65[_0x5138a6(0x187)], _0x30ca65[_0x5138a6(0x16d)], _0x30ca65[_0x5138a6(0x163)]],
-        'crypto': {
-            'hexToBuffer': _0x1c13fe => {
-                const _0x2616cb = _0x5138a6,
-                    _0x41bf81 = _0x1c13fe[_0x2616cb(0x19a)](/.{1,2}/g);
-                return Buffer[_0x2616cb(0x137)](_0x41bf81[_0x2616cb(0x160)](''), _0x30ca65[_0x2616cb(0x17d)]);
-            },
-            'decrypt': async _0x1e02f7 => {
-                const _0x4103ce = _0x5138a6,
-                    _0x35a863 = _0x30ca65[_0x4103ce(0x173)],
-                    _0x28e1b7 = Buffer[_0x4103ce(0x137)](_0x1e02f7, _0x30ca65[_0x4103ce(0x1a6)]),
-                    _0x59755c = _0x28e1b7[_0x4103ce(0x1af)](-0xd69 * 0x1 + 0x13e9 + -0x680, 0x1 * 0xa55 + 0x1fe + -0xc43 * 0x1),
-                    _0x277389 = _0x28e1b7[_0x4103ce(0x1af)](-0x10c * -0x1 + -0x7 * -0x16f + -0x7 * 0x193),
-                    _0x3bffa0 = _0x1014c2[_0x4103ce(0x16a)][_0x4103ce(0x15c) + 'r'](_0x35a863),
-                    _0x4e32e0 = _0x5f4637[_0x4103ce(0x1b4) + _0x4103ce(0x153)](_0x30ca65[_0x4103ce(0x1ad)], _0x3bffa0, _0x59755c);
-                let _0x1af268 = _0x4e32e0[_0x4103ce(0x167)](_0x277389);
-                return _0x1af268 = Buffer[_0x4103ce(0x179)]([_0x1af268, _0x4e32e0[_0x4103ce(0x155)]()]), JSON[_0x4103ce(0x148)](_0x1af268[_0x4103ce(0x1a7)]());
-            }
-        },
-        'youtube': _0x2549a9 => {
-            const _0x27d0ad = _0x5138a6;
-            if (!_0x2549a9) return null;
-            const _0x2e7509 = [/youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/, /youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/, /youtube\.com\/v\/([a-zA-Z0-9_-]{11})/, /youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/, /youtu\.be\/([a-zA-Z0-9_-]{11})/];
-            for (let _0x488be5 of _0x2e7509) {
-                if (_0x488be5[_0x27d0ad(0x17b)](_0x2549a9)) return _0x2549a9[_0x27d0ad(0x19a)](_0x488be5)[0x1 * -0x70f + -0x14bf * 0x1 + -0x1 * -0x1bcf];
-            }
-            return null;
-        },
-        'request': async (_0x163da1, _0x5d629c = {}, _0x4bb920 = _0x5138a6(0x13e)) => {
-            const _0x93acfb = _0x5138a6,
-                {
-                    data: _0x10dbea
-                } = await _0x30ca65[_0x93acfb(0x19f)](_0x345fd4, {
-                    'method': _0x4bb920,
-                    'url': '' + (_0x163da1[_0x93acfb(0x132)](_0x30ca65[_0x93acfb(0x17e)]) ? '' : _0x1014c2[_0x93acfb(0x13d)][_0x93acfb(0x182)]) + _0x163da1,
-                    'data': _0x30ca65[_0x93acfb(0x193)](_0x4bb920, _0x30ca65[_0x93acfb(0x194)]) ? _0x5d629c : undefined,
-                    'params': _0x30ca65[_0x93acfb(0x193)](_0x4bb920, _0x30ca65[_0x93acfb(0x13c)]) ? _0x5d629c : undefined,
-                    'headers': _0x1014c2[_0x93acfb(0x133)]
-                });
-            return {
-                'status': !![],
-                'code': 0xc8,
-                'data': _0x10dbea
-            };
-        },
-        'getCDN': async () => {
-            const _0x38b4c7 = _0x5138a6,
-                _0x35f10e = await _0x1014c2[_0x38b4c7(0x170)](_0x1014c2[_0x38b4c7(0x13d)][_0x38b4c7(0x1a2)], {}, _0x30ca65[_0x38b4c7(0x13c)]);
-            return {
-                'status': !![],
-                'code': 0xc8,
-                'data': _0x35f10e[_0x38b4c7(0x174)][_0x38b4c7(0x1a2)]
-            };
-        },
-        'download': async (_0x31351a, _0x2cebc0) => {
-            const _0x2cae81 = _0x5138a6,
-                _0x5bc2f6 = _0x1014c2[_0x2cae81(0x169)](_0x31351a);
-            if (!_0x5bc2f6) throw new Error(_0x30ca65[_0x2cae81(0x189)]);
-            const _0x5852d4 = await _0x1014c2[_0x2cae81(0x190)](),
-                _0x1090cf = _0x5852d4[_0x2cae81(0x174)],
-                _0x52201c = await _0x1014c2[_0x2cae81(0x170)](_0x2cae81(0x15b) + _0x1090cf + _0x1014c2[_0x2cae81(0x13d)][_0x2cae81(0x13a)], {
-                    'url': _0x2cae81(0x166) + _0x2cae81(0x178) + _0x2cae81(0x18e) + 'v=' + _0x5bc2f6
-                }),
-                _0x405c9d = await _0x1014c2[_0x2cae81(0x16a)][_0x2cae81(0x165)](_0x52201c[_0x2cae81(0x174)][_0x2cae81(0x174)]),
-                _0x260eb9 = await _0x1014c2[_0x2cae81(0x170)](_0x2cae81(0x15b) + _0x1090cf + _0x1014c2[_0x2cae81(0x13d)][_0x2cae81(0x144)], {
-                    'id': _0x5bc2f6,
-                    'downloadType': _0x30ca65[_0x2cae81(0x193)](_0x2cebc0, _0x30ca65[_0x2cae81(0x163)]) ? _0x30ca65[_0x2cae81(0x172)] : _0x30ca65[_0x2cae81(0x196)],
-                    'quality': _0x30ca65[_0x2cae81(0x193)](_0x2cebc0, _0x30ca65[_0x2cae81(0x163)]) ? _0x30ca65[_0x2cae81(0x147)] : _0x2cebc0,
-                    'key': _0x405c9d[_0x2cae81(0x184)]
-                });
-            return {
-                'status': !![],
-                'code': 0xc8,
-                'result': {
-                    'title': _0x405c9d[_0x2cae81(0x16f)] || _0x30ca65[_0x2cae81(0x152)],
-                    'type': _0x30ca65[_0x2cae81(0x1a0)](_0x2cebc0, _0x30ca65[_0x2cae81(0x163)]) ? _0x30ca65[_0x2cae81(0x172)] : _0x30ca65[_0x2cae81(0x196)],
-                    'format': _0x2cebc0,
-                    'thumbnail': _0x405c9d[_0x2cae81(0x164)] || _0x2cae81(0x185) + _0x2cae81(0x1ac) + _0x2cae81(0x159) + _0x5bc2f6 + _0x2cae81(0x18a),
-                    'download': _0x260eb9[_0x2cae81(0x174)][_0x2cae81(0x174)][_0x2cae81(0x17a) + 'l'],
-                    'id': _0x5bc2f6,
-                    'key': _0x405c9d[_0x2cae81(0x184)],
-                    'duration': _0x405c9d[_0x2cae81(0x146)],
-                    'quality': _0x30ca65[_0x2cae81(0x14e)](_0x2cebc0, _0x30ca65[_0x2cae81(0x163)]) ? _0x30ca65[_0x2cae81(0x147)] : _0x2cebc0,
-                    'downloaded': _0x260eb9[_0x2cae81(0x174)][_0x2cae81(0x174)][_0x2cae81(0x156)]
-                }
-            };
-        }
-    };
+
     try {
-        const _0x5e2a4a = await _0x30ca65[_0x5138a6(0x1a1)](_0x5b339e, _0x40db38),
-            _0x1fd045 = _0x5e2a4a[_0x5138a6(0x180)][-0x45 * -0x8 + 0x1 * 0xc5b + 0xe83 * -0x1];
-        if (!_0x1fd045) return _0x32f9a5[_0x5138a6(0x1b5)](_0x30ca65[_0x5138a6(0x1a8)]);
-        const _0x4cf767 = await _0x1014c2[_0x5138a6(0x144)](_0x1fd045[_0x5138a6(0x18b)], _0x30ca65[_0x5138a6(0x163)]),
-            _0x4e063c = _0x4cf767[_0x5138a6(0x14b)];
-        _0x549133[_0x5138a6(0x183) + 'e'](_0x32f9a5[_0x5138a6(0x17c)], {
-            'audio': {
-                'url': _0x4e063c[_0x5138a6(0x144)]
+        let {
+            title,
+            format,
+            videoUrl,
+            downloadLink,
+            searchResult: { thumbnail, duration },
+        } = response.data;
+
+        let caption = `*∘ Judul :* ${title}\n`;
+        caption += `*∘ Duration :* ${duration}\n`;
+        caption += `*∘ Link Video :* ${videoUrl}\n`;
+
+        await conn.relayMessage(m.chat, {
+            extendedTextMessage: {
+                text: caption,
+                contextInfo: {
+                    externalAdReply: {
+                        title: title,
+                        body: 'Klik untuk melihat detail',
+                        mediaType: 1,
+                        previewType: 0,
+                        renderLargerThumbnail: true,
+                        thumbnailUrl: thumbnail,
+                        sourceUrl: videoUrl,
+                    },
+                },
             },
-            'mimetype': _0x30ca65[_0x5138a6(0x158)]
-        }, {
-            'quoted': _0x32f9a5
+        }, {});
+
+        const videoPath = `./tmp/${title.replace(/[^a-zA-Z0-9]/g, '_')}.mp4`;
+        const audioPath = `./tmp/${title.replace(/[^a-zA-Z0-9]/g, '_')}.mp3`;
+
+        const videoResponse = await axios({
+            url: downloadLink,
+            method: 'GET',
+            responseType: 'stream',
         });
-    } catch (_0x2ac9c2) {
-        _0x32f9a5[_0x5138a6(0x1b5)](_0x30ca65[_0x5138a6(0x141)]);
+
+        const writer = fs.createWriteStream(videoPath);
+        videoResponse.data.pipe(writer);
+        await new Promise((resolve, reject) => {
+            writer.on('finish', resolve);
+            writer.on('error', reject);
+        });
+
+        ffmpeg(videoPath)
+            .inputOption('-vn')
+            .outputOption('-acodec', 'libmp3lame')
+            .outputOption('-preset', 'ultrafast')
+            .outputOption('-b:a', '128k')
+            .saveToFile(audioPath)
+            .on('error', (err) => {
+                console.error("Kesalahan saat konversi:", err.message);
+                throw 'Gagal mengkonversi video ke audio.';
+            })
+            .on('end', async () => {
+                let audioBuffer = fs.readFileSync(audioPath);
+                await conn.sendMessage(
+                    m.chat,
+                    { mimetype: "audio/mpeg", audio: audioBuffer },
+                    { quoted: m }
+                );
+
+                fs.unlinkSync(videoPath);
+                fs.unlinkSync(audioPath);
+            });
+    } catch (error) {
+        console.error("Error:", error.message);
+        throw `Terjadi kesalahan saat memproses permintaan. Coba lagi nanti.\nError: ${error.message}`;
     }
 };
-function _0xaf35() {
-    const _0x2d8cc2 = ['dia.savetu', 'mKGfp', 'thumbnail', 'decrypt', 'https://ww', 'update', 'audio/mp4', 'youtube', 'crypto', 'in lagu ny', 'VAkiO', 'NoFsK', 'uy? 🎵', 'title', 'request', 'base64', 'NgIDU', 'HGDYc', 'data', '128', 'http', 'qcvFb', 'w.youtube.', 'concat', 'downloadUr', 'test', 'chat', 'cGGHP', 'dWHRR', '9930355bAgsOR', 'videos', 'RRuSG', 'base', 'sendMessag', 'key', 'https://i.', '720', 'UBuTl', '101196pfaLiP', 'WGKGt', '/0.jpg', 'url', 'C5D58EF67A', 'QzPQt', 'com/watch?', 'JrSmT', 'getCDN', '7584E4A29F', 'Gak tau', 'Xohkl', 'SDHZw', 'juvRM', 'bJnpU', 'Judul lagu', 'aes-128-cb', '155822IdEUVK', 'match', 'be ga vali', '23qDikwQ', '1647848TioqIi', 'REcYT', 'MftTt', 'XvHet', 'KyEeJ', 'cdn', '29410YTQRlk', '480', '4qqIQIY', 'ANeBJ', 'toString', 'WImUA', 'applicatio', 'be.me/api', 'mp3', 'ytimg.com/', 'evtRN', 'rzMCi', 'slice', 'gbneQ', 'TDQKo', '0.0', 'audio', 'createDeci', 'reply', 'LPpOv', '/random-cd', '/download', 'd cuy 😵', 'get', 'video', '10196652YjfHJB', 'hmpFi', 'startsWith', 'headers', 'Link YouTu', '.savetube.', 'https://yt', 'from', '/v2/info', 'https://me', 'info', '7Ugmdwc', 'bDLLI', 'api', 'post', '1080', 'Gagal nemu', 'aAEHy', '240', '360', 'download', 'me/', 'duration', 'vkRnJ', 'parse', '22352ZuCtLM', 'mDUTT', 'result', 'maaf ya er', 'cXzmr', 'tzOEa', 'a cuy 😞', '837912FcgRom', 'hex', 'TIJaW', 'pheriv', '6C35BBC4EB', 'final', 'downloaded', '144', 'vMURj', 'vi/', '*/*', 'https://', 'hexToBuffe', 'Postify/1.', 'nya mana C', 'n/json', 'join', 'ror'];
-    _0xaf35 = function () {
-        return _0x2d8cc2;
-    };
-    return _0xaf35();
-}
 
-handler.command = ['play']
-handler.help = ['play <judul>']
-handler.tags = ['downloader']
-handler.limit = true;
+handler.command = handler.help = ['play'];
+handler.tags = ['downloader'];
 export default handler;
